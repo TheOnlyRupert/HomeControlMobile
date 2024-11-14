@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HomeControlMobile.Source.Modules.SettingsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20">
+                <Label Text="User Names" FontSize="Medium" TextColor="White" />
+
+                <Entry Placeholder="User 1" Text="{Binding User1Name}" />
+                <Entry Placeholder="User 2" Text="{Binding User2Name}" />
+                <Entry Placeholder="User 3" Text="{Binding User3Name}" />
+                <Entry Placeholder="User 4" Text="{Binding User4Name}" />
+                <Entry Placeholder="User 5" Text="{Binding User5Name}" />
+                
+                <Label Text="File Host Type" TextColor="White" FontSize="Medium" />
+            
+                <HorizontalStackLayout Spacing="10">
+                    <RadioButton 
+                        GroupName="Server"
+                        Content="Locally Hosted (Off)" 
+                        TextColor="White" 
+                        IsChecked="{Binding IsLocallyHosted}" />
+
+                    <RadioButton 
+                        GroupName="Server"
+                        Content="Online Database" 
+                        TextColor="White" 
+                        IsChecked="{Binding IsDatabaseHosted}" />
+                </HorizontalStackLayout>
+
+                <Label Text="Database Host" TextColor="White" FontSize="Medium" />
+                <Entry 
+                    Text="{Binding DatabaseHost}" 
+                    IsEnabled="{Binding IsDatabaseHosted}" 
+                    Placeholder="Enter host IP"
+                    TextColor="White"
+                    BackgroundColor="Transparent" />
+
+                <Label Text="Database Username" TextColor="White" FontSize="Medium" />
+                <Entry 
+                    Text="{Binding DatabaseUsername}" 
+                    IsEnabled="{Binding IsDatabaseHosted}" 
+                    Placeholder="Enter username"
+                    TextColor="White"
+                    BackgroundColor="Transparent" />
+
+                <Label Text="Database Password" TextColor="White" FontSize="Medium" />
+                <Entry 
+                    Text="{Binding DatabasePassword}" 
+                    IsEnabled="{Binding IsDatabaseHosted}" 
+                    IsPassword="True" 
+                    Placeholder="Enter password"
+                    TextColor="White"
+                    BackgroundColor="Transparent" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

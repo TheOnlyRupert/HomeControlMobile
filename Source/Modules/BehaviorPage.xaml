@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HomeControlMobile.Source.Modules.BehaviorPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Manage Stars and Strikes" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+
+                <StackLayout Orientation="Horizontal" Spacing="15">
+                    <Label Text="{Binding User1Name}" FontSize="Medium" />
+                
+                    <!-- Stars Section -->
+                    <Label Text="Stars:" />
+                    <Button Text="-" Command="{Binding DecreaseStarsCommand}" CommandParameter="User1" />
+                    <Label Text="{Binding User1Stars}" />
+                    <Button Text="+" Command="{Binding IncreaseStarsCommand}" CommandParameter="User1" />
+
+                    <!-- Strikes Section -->
+                    <Label Text="Strikes:" />
+                    <Button Text="-" Command="{Binding DecreaseStrikesCommand}" CommandParameter="User1" />
+                    <Label Text="{Binding User1Strikes}" />
+                    <Button Text="+" Command="{Binding IncreaseStrikesCommand}" CommandParameter="User1" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="15">
+                    <Label Text="{Binding User2Name}" FontSize="Medium" />
+                
+                    <!-- Stars Section -->
+                    <Label Text="Stars:" />
+                    <Button Text="-" Command="{Binding DecreaseStarsCommand}" CommandParameter="User2" />
+                    <Label Text="{Binding User2Stars}" />
+                    <Button Text="+" Command="{Binding IncreaseStarsCommand}" CommandParameter="User2" />
+
+                    <!-- Strikes Section -->
+                    <Label Text="Strikes:" />
+                    <Button Text="-" Command="{Binding DecreaseStrikesCommand}" CommandParameter="User2" />
+                    <Label Text="{Binding User2Strikes}" />
+                    <Button Text="+" Command="{Binding IncreaseStrikesCommand}" CommandParameter="User2" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="15">
+                    <Label Text="{Binding User3Name}" FontSize="Medium" />
+                
+                    <!-- Stars Section -->
+                    <Label Text="Stars:" />
+                    <Button Text="-" Command="{Binding DecreaseStarsCommand}" CommandParameter="User3" />
+                    <Label Text="{Binding User3Stars}" />
+                    <Button Text="+" Command="{Binding IncreaseStarsCommand}" CommandParameter="User3" />
+
+                    <!-- Strikes Section -->
+                    <Label Text="Strikes:" />
+                    <Button Text="-" Command="{Binding DecreaseStrikesCommand}" CommandParameter="User3" />
+                    <Label Text="{Binding User3Strikes}" />
+                    <Button Text="+" Command="{Binding IncreaseStrikesCommand}" CommandParameter="User3" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="15">
+                    <Label Text="{Binding User4Name}" FontSize="Medium" />
+                
+                    <!-- Stars Section -->
+                    <Label Text="Stars:" />
+                    <Button Text="-" Command="{Binding DecreaseStarsCommand}" CommandParameter="User4" />
+                    <Label Text="{Binding User4Stars}" />
+                    <Button Text="+" Command="{Binding IncreaseStarsCommand}" CommandParameter="User4" />
+
+                    <!-- Strikes Section -->
+                    <Label Text="Strikes:" />
+                    <Button Text="-" Command="{Binding DecreaseStrikesCommand}" CommandParameter="User4" />
+                    <Label Text="{Binding User4Strikes}" />
+                    <Button Text="+" Command="{Binding IncreaseStrikesCommand}" CommandParameter="User4" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="15">
+                    <Label Text="{Binding User5Name}" FontSize="Medium" />
+                
+                    <!-- Stars Section -->
+                    <Label Text="Stars:" />
+                    <Button Text="-" Command="{Binding DecreaseStarsCommand}" CommandParameter="User5" />
+                    <Label Text="{Binding User5Stars}" />
+                    <Button Text="+" Command="{Binding IncreaseStarsCommand}" CommandParameter="User5" />
+
+                    <!-- Strikes Section -->
+                    <Label Text="Strikes:" />
+                    <Button Text="-" Command="{Binding DecreaseStrikesCommand}" CommandParameter="User5" />
+                    <Label Text="{Binding User5Strikes}" />
+                    <Button Text="+" Command="{Binding IncreaseStrikesCommand}" CommandParameter="User5" />
+                </StackLayout>
+
+                <!-- Save Button -->
+                <Button Text="Save" Command="{Binding SaveCommand}" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

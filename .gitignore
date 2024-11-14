@@ -1,0 +1,11 @@
+# Ignored Folders:
+/.git
+/.idea
+/bin
+/packages
+/obj
+/Versions
+
+# Ignored Files:
+.gitattributes
+riderModule.iml

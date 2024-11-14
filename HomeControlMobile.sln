@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeControlMobile", "HomeControlMobile.csproj", "{BAB5D353-9ECE-49D8-BBBA-31A4B8B5C913}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAB5D353-9ECE-49D8-BBBA-31A4B8B5C913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB5D353-9ECE-49D8-BBBA-31A4B8B5C913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB5D353-9ECE-49D8-BBBA-31A4B8B5C913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB5D353-9ECE-49D8-BBBA-31A4B8B5C913}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
