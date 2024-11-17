@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HomeControlMobile.Source.Modules.CalendarPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header with month navigation buttons -->
+        <Grid ColumnDefinitions="*,*,*" Grid.Row="0" Padding="10">
+            <Button Text="◄" Command="{Binding PreviousMonthCommand}" Grid.Column="0" />
+            <Label Text="{Binding CurrentMonth, StringFormat='{0:MMMM yyyy}'}" Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" TextColor="White" Width="256" />
+            <Button Text="►" Command="{Binding NextMonthCommand}" Grid.Column="2" />
+        </Grid>
+
+        <!-- Calendar Grid -->
+        <Grid Grid.Row="1" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Day labels -->
+            <Label Text="Sun" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" TextColor="White" />
+            <Label Text="Mon" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" TextColor="White" />
+            <Label Text="Tue" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" TextColor="White" />
+            <Label Text="Wed" Grid.Row="0" Grid.Column="3" HorizontalTextAlignment="Center" TextColor="White" />
+            <Label Text="Thu" Grid.Row="0" Grid.Column="4" HorizontalTextAlignment="Center" TextColor="White" />
+            <Label Text="Fri" Grid.Row="0" Grid.Column="5" HorizontalTextAlignment="Center" TextColor="White" />
+            <Label Text="Sat" Grid.Row="0" Grid.Column="6" HorizontalTextAlignment="Center" TextColor="White" />
+
+            <!-- Calendar days -->
+            <CollectionView ItemsSource="{Binding CalendarDays}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="6">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="7" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="LightGray" Padding="10" Margin="2">
+                            <StackLayout>
+                                <Label Text="{Binding Date.Day}" HorizontalOptions="Center" />
+                                <CollectionView ItemsSource="{Binding Events}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame BorderColor="LightGray" Padding="5">
+                                                <StackLayout>
+                                                    <Label Text="{Binding Title}" TextColor="{Binding ForegroundColor}" />
+                                                </StackLayout>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -6,11 +6,11 @@
     <ContentPage.Content>
         <ScrollView>
             <VerticalStackLayout Spacing="10">
-                <Label Text="Manage Stars and Strikes" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text="Manage Stars and Strikes" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center" />
 
                 <StackLayout Orientation="Horizontal" Spacing="15">
                     <Label Text="{Binding User1Name}" FontSize="Medium" />
-                
+
                     <!-- Stars Section -->
                     <Label Text="Stars:" />
                     <Button Text="-" Command="{Binding DecreaseStarsCommand}" CommandParameter="User1" />
@@ -26,7 +26,7 @@
 
                 <StackLayout Orientation="Horizontal" Spacing="15">
                     <Label Text="{Binding User2Name}" FontSize="Medium" />
-                
+
                     <!-- Stars Section -->
                     <Label Text="Stars:" />
                     <Button Text="-" Command="{Binding DecreaseStarsCommand}" CommandParameter="User2" />
@@ -42,7 +42,7 @@
 
                 <StackLayout Orientation="Horizontal" Spacing="15">
                     <Label Text="{Binding User3Name}" FontSize="Medium" />
-                
+
                     <!-- Stars Section -->
                     <Label Text="Stars:" />
                     <Button Text="-" Command="{Binding DecreaseStarsCommand}" CommandParameter="User3" />
@@ -58,7 +58,7 @@
 
                 <StackLayout Orientation="Horizontal" Spacing="15">
                     <Label Text="{Binding User4Name}" FontSize="Medium" />
-                
+
                     <!-- Stars Section -->
                     <Label Text="Stars:" />
                     <Button Text="-" Command="{Binding DecreaseStarsCommand}" CommandParameter="User4" />
@@ -74,7 +74,7 @@
 
                 <StackLayout Orientation="Horizontal" Spacing="15">
                     <Label Text="{Binding User5Name}" FontSize="Medium" />
-                
+
                     <!-- Stars Section -->
                     <Label Text="Stars:" />
                     <Button Text="-" Command="{Binding DecreaseStarsCommand}" CommandParameter="User5" />

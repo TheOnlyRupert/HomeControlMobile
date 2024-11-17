@@ -60,29 +60,30 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2"/>
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)"/>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0"/>
-        <PackageReference Include="MySql.Data" Version="9.1.0" />
+        <PackageReference Include="MySql.Data" Version="9.1.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <MauiXaml Update="Source\Modules\BehaviorPage.xaml">
-        <SubType>Designer</SubType>
-      </MauiXaml>
-      <MauiXaml Update="Source\Modules\Settings.xaml">
-        <SubType>Designer</SubType>
-      </MauiXaml>
+        <MauiXaml Update="Source\Modules\BehaviorPage.xaml">
+            <SubType>Designer</SubType>
+        </MauiXaml>
+        <MauiXaml Update="Source\Modules\Settings.xaml">
+            <SubType>Designer</SubType>
+        </MauiXaml>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Source\Modules\BehaviorPage.xaml.cs">
-        <DependentUpon>BehaviorPage.xaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Source\Modules\Settings.xaml.cs">
-        <DependentUpon>Settings.xaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
+        <Compile Update="Source\Modules\BehaviorPage.xaml.cs">
+            <DependentUpon>BehaviorPage.xaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Source\Modules\Settings.xaml.cs">
+            <DependentUpon>Settings.xaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
 </Project>

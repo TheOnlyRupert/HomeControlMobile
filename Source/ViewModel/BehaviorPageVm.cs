@@ -5,23 +5,6 @@ using MySql.Data.MySqlClient;
 namespace HomeControlMobile.Source.ViewModel;
 
 public class BehaviorPageVm : INotifyPropertyChanged {
-    public event PropertyChangedEventHandler? PropertyChanged;
-    public int User1Stars { get; set; }
-    public int User1Strikes { get; set; }
-    public int User2Stars { get; set; }
-    public int User2Strikes { get; set; }
-    public int User3Stars { get; set; }
-    public int User3Strikes { get; set; }
-    public int User4Stars { get; set; }
-    public int User4Strikes { get; set; }
-    public int User5Stars { get; set; }
-    public int User5Strikes { get; set; }
-    public ICommand IncreaseStarsCommand { get; }
-    public ICommand DecreaseStarsCommand { get; }
-    public ICommand IncreaseStrikesCommand { get; }
-    public ICommand DecreaseStrikesCommand { get; }
-    public ICommand SaveCommand { get; }
-
     public BehaviorPageVm() {
         MySqlConnection connection = new(@"Server=" + Preferences.Get(nameof(SettingsPageVm.DatabaseHost), "null") + @";Database=HomeControl;Uid=" +
                                          Preferences.Get(nameof(SettingsPageVm.DatabaseUsername), "null") + @";Pwd=" + Preferences.Get(nameof(SettingsPageVm.DatabasePassword), "null"));
@@ -86,6 +69,23 @@ public class BehaviorPageVm : INotifyPropertyChanged {
         SaveCommand = new Command(SaveData);
     }
 
+    public int User1Stars { get; set; }
+    public int User1Strikes { get; set; }
+    public int User2Stars { get; set; }
+    public int User2Strikes { get; set; }
+    public int User3Stars { get; set; }
+    public int User3Strikes { get; set; }
+    public int User4Stars { get; set; }
+    public int User4Strikes { get; set; }
+    public int User5Stars { get; set; }
+    public int User5Strikes { get; set; }
+    public ICommand IncreaseStarsCommand { get; }
+    public ICommand DecreaseStarsCommand { get; }
+    public ICommand IncreaseStrikesCommand { get; }
+    public ICommand DecreaseStrikesCommand { get; }
+    public ICommand SaveCommand { get; }
+    public event PropertyChangedEventHandler? PropertyChanged;
+
     public void SaveData() {
         MySqlConnection connection = new(@"Server=" + Preferences.Get(nameof(SettingsPageVm.DatabaseHost), "null") + @";Database=HomeControl;Uid=" +
                                          Preferences.Get(nameof(SettingsPageVm.DatabaseUsername), "null") + @";Pwd=" + Preferences.Get(nameof(SettingsPageVm.DatabasePassword), "null"));
@@ -131,7 +131,7 @@ public class BehaviorPageVm : INotifyPropertyChanged {
                 using (MySqlCommand versionCommand = new(updateVersion, connection, transaction)) {
                     versionCommand.ExecuteNonQuery();
                 }
-                
+
                 transaction.Commit();
             }
         } catch (Exception ex) {
@@ -243,6 +243,7 @@ public class BehaviorPageVm : INotifyPropertyChanged {
         OnPropertyChanged(nameof(User5Strikes));
     }
 
-    protected virtual void OnPropertyChanged(string propertyName) =>
+    protected virtual void OnPropertyChanged(string propertyName) {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }
