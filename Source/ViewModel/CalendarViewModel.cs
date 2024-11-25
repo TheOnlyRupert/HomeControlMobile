@@ -23,7 +23,7 @@ public class CalendarViewModel : BindableObject {
             if (_currentMonth != value) {
                 _currentMonth = value;
                 OnPropertyChanged();
-                LoadCalendarDays(); // Reload the calendar days when the month changes
+                LoadCalendarDays();
             }
         }
     }
@@ -41,7 +41,7 @@ public class CalendarViewModel : BindableObject {
     public Command PreviousMonthCommand { get; }
     public Command NextMonthCommand { get; }
 
-    private async void LoadCalendarDays() {
+    private void LoadCalendarDays() {
         // Create a temporary collection of calendar days
         ObservableCollection<CalendarDay> calendarDays = new();
 
@@ -93,35 +93,25 @@ public class CalendarViewModel : BindableObject {
         }
 
         // Fetch events for the calendar (same as original code)
-        await FetchEvents(firstDayOfMonth, lastDayOfMonth, calendarDays);
-
-        CalendarDays[0].Events.Add(new CalendarEvent {
-            Id = 2,
-            EventDate = DateTime.Today,
-            Title = "Test",
-            ForegroundColor = Color.FromRgb(255, 255, 255)
-        });
+        FetchEvents(firstDayOfMonth, lastDayOfMonth, calendarDays);
     }
 
-    private async Task FetchEvents(DateTime firstDayOfMonth, DateTime lastDayOfMonth, ObservableCollection<CalendarDay> calendarDays) {
+    private void FetchEvents(DateTime firstDayOfMonth, DateTime lastDayOfMonth, ObservableCollection<CalendarDay> calendarDays) {
         MySqlConnection connection = new(@"Server=" + Preferences.Get(nameof(SettingsPageVm.DatabaseHost), "null") + @";Database=HomeControl;Uid=" +
                                          Preferences.Get(nameof(SettingsPageVm.DatabaseUsername), "null") + @";Pwd=" + Preferences.Get(nameof(SettingsPageVm.DatabasePassword), "null"));
 
         try {
-            await connection.OpenAsync();
+            connection.Open();
 
-            MySqlCommand command = new("SELECT * FROM events WHERE date BETWEEN @start AND @end", connection);
-            command.Parameters.AddWithValue("@start", firstDayOfMonth);
-            command.Parameters.AddWithValue("@end", lastDayOfMonth);
-            await using DbDataReader reader = await command.ExecuteReaderAsync();
+            MySqlCommand command = new("SELECT * FROM calendar_events", connection);
+            using DbDataReader reader = command.ExecuteReader();
 
-            while (await reader.ReadAsync()) {
-                DateTime eventDate = reader.GetDateTime("EventDate");
+            while (reader.Read()) {
+                DateTime eventDate = reader.GetDateTime("event_date");
                 CalendarEvent calendarEvent = new() {
-                    Id = reader.GetInt32("Id"),
+                    Id = reader.GetInt32("id"),
                     EventDate = eventDate,
-                    Title = reader.GetString("Title"),
-                    ForegroundColor = Color.FromArgb(reader.GetString("ForegroundColor"))
+                    Title = reader.GetString("event_name")
                 };
 
                 CalendarDay? matchingDay = calendarDays.FirstOrDefault(d => d.Date.Date == eventDate.Date);
@@ -132,7 +122,6 @@ public class CalendarViewModel : BindableObject {
         }
     }
 
-    // Command handlers for navigating between months
     private void GoToPreviousMonth() {
         CurrentMonth = CurrentMonth.AddMonths(-1); // This triggers LoadCalendarDays
     }

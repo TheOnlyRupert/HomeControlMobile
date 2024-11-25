@@ -127,11 +127,6 @@ public class BehaviorPageVm : INotifyPropertyChanged {
                     command.ExecuteNonQuery();
                 }
 
-                const string updateVersion = "UPDATE versions SET version = version + 1 WHERE id = 1";
-                using (MySqlCommand versionCommand = new(updateVersion, connection, transaction)) {
-                    versionCommand.ExecuteNonQuery();
-                }
-
                 transaction.Commit();
             }
         } catch (Exception ex) {
